@@ -90,7 +90,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest tests/ -v
+        pytest --cov=torsiontuner --cov-report=xml tests/ -v
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v5
       with:

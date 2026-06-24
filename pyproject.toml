@@ -8,10 +8,6 @@ strict_equality = true
 exclude = ["build/", "dist/", "scratch/", "site/"]
 
 [[tool.mypy.overrides]]
-module = ["tests.*", "scripts.*", "examples.*"]
-disallow_untyped_defs = false
-
-[[tool.mypy.overrides]]
 module = [
     "jax.*",
     "jaxlib.*",
@@ -19,10 +15,7 @@ module = [
     "equinox.*",
     "numpy.*",
     "biotite.*",
-    "pandas.*",
     "diff_biophys.*",
-    "synth_pdb.*",
-    "synth_nmr.*",
 ]
 ignore_missing_imports = true
 
@@ -117,6 +110,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest",
+    "pytest-cov",
     "hypothesis",
     "black",
     "ruff",

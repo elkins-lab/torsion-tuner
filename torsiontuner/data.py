@@ -51,7 +51,7 @@ def load_pdb(file_path: str) -> dict:
 
     # Filter for backbone atoms (N, CA, C)
     mask = np.isin(struct.atom_name, ["N", "CA", "C"])
-    backbone = struct[mask]
+    backbone = struct[mask]  # type: ignore[index]
 
     res_names = []
     coords = []
