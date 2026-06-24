@@ -1,9 +1,9 @@
 # 🧬 Torsion-Tuner: GNN-Based Protein Structure Refinement
 
-[![codecov](https://codecov.io/gh/elkins/torsion-tuner/branch/master/graph/badge.svg)](https://codecov.io/gh/elkins/torsion-tuner)
-[![Tests](https://github.com/elkins/torsion-tuner/actions/workflows/test.yml/badge.svg)](https://github.com/elkins/torsion-tuner/actions/workflows/test.yml)
-[![Lint](https://github.com/elkins/torsion-tuner/actions/workflows/lint.yml/badge.svg)](https://github.com/elkins/torsion-tuner/actions/workflows/lint.yml)
-[![Docs](https://github.com/elkins/torsion-tuner/actions/workflows/docs.yml/badge.svg)](https://github.com/elkins/torsion-tuner/actions/workflows/docs.yml)
+[![codecov](https://codecov.io/gh/elkins-lab/torsion-tuner/branch/master/graph/badge.svg)](https://codecov.io/gh/elkins-lab/torsion-tuner)
+[![Tests](https://github.com/elkins-lab/torsion-tuner/actions/workflows/test.yml/badge.svg)](https://github.com/elkins-lab/torsion-tuner/actions/workflows/test.yml)
+[![Lint](https://github.com/elkins-lab/torsion-tuner/actions/workflows/lint.yml/badge.svg)](https://github.com/elkins-lab/torsion-tuner/actions/workflows/lint.yml)
+[![Docs](https://github.com/elkins-lab/torsion-tuner/actions/workflows/docs.yml/badge.svg)](https://github.com/elkins-lab/torsion-tuner/actions/workflows/docs.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -38,7 +38,7 @@ By operating exclusively in **torsional space** ($\phi/\psi$ angles), we ensure 
 
 ### 1. Installation
 ```bash
-git clone https://github.com/elkins/torsion-tuner.git
+git clone https://github.com/elkins-lab/torsion-tuner.git
 cd torsion-tuner
 pip install -e .
 ```
@@ -58,7 +58,7 @@ python -m torsiontuner.train
 
 Experience **Torsion-Tuner** directly in your browser:
 
-- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/elkins/torsion-tuner/blob/master/examples/interactive_tutorials/multi_modal_refinement.ipynb) **Multi-Modal GNN Refinement** — Learn how to refine protein structures using GNNs against SAXS and NMR data.
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/elkins-lab/torsion-tuner/blob/master/examples/interactive_tutorials/multi_modal_refinement.ipynb) **Multi-Modal GNN Refinement** — Learn how to refine protein structures using GNNs against SAXS and NMR data.
 
 ## 🛠 Software Architecture
 
@@ -116,11 +116,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Torsion-Tuner depends on and integrates with:
 
-- [diff-biophys](https://github.com/elkins/diff-biophys) — JAX differentiable kernels for SAXS and NMR losses
-- [synth-pdb](https://github.com/elkins/synth-pdb) — Synthetic PDB generation for training and validation
-- [synth-nmr](https://github.com/elkins/synth-nmr) — Chemical shift prediction and NMR observables
-- [synth-saxs](https://github.com/elkins/synth-saxs) — SAXS profile simulation for loss computation
-- [diff-ensemble](https://github.com/elkins/diff-ensemble) — Ensemble-level counterpart using a VAE architecture
+- [diff-biophys](https://github.com/elkins-lab/diff-biophys) — JAX differentiable kernels for SAXS and NMR losses
+- [synth-pdb](https://github.com/elkins-lab/synth-pdb) — Synthetic PDB generation for training and validation
+- [synth-nmr](https://github.com/elkins-lab/synth-nmr) — Chemical shift prediction and NMR observables
+- [synth-saxs](https://github.com/elkins-lab/synth-saxs) — SAXS profile simulation for loss computation
+- [diff-ensemble](https://github.com/elkins-lab/diff-ensemble) — Ensemble-level counterpart using a VAE architecture
 
 ---
 
@@ -130,8 +130,8 @@ Torsion-Tuner depends on and integrates with:
 @software{torsiontuner,
   author  = {Elkins, George},
   title   = {Torsion-Tuner: GNN-based protein structure refinement in torsional space},
-  year    = {2024},
-  url     = {https://github.com/elkins/torsion-tuner},
+  year    = {2026},
+  url     = {https://github.com/elkins-lab/torsion-tuner},
   version = {0.1.0}
 }
 ```
