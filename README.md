@@ -132,6 +132,6 @@ Torsion-Tuner depends on and integrates with:
   title   = {Torsion-Tuner: GNN-based protein structure refinement in torsional space},
   year    = {2026},
   url     = {https://github.com/elkins-lab/torsion-tuner},
-  version = {0.1.0}
+  version = {0.1.3}
 }
 ```
