@@ -16,6 +16,8 @@ module = [
     "numpy.*",
     "biotite.*",
     "diff_biophys.*",
+    "synth_nmr",
+    "synth_nmr.*",
 ]
 ignore_missing_imports = true
 
@@ -82,7 +84,7 @@ exclude_lines = [
 
 [project]
 name = "torsiontuner"
-version = "0.1.2"
+version = "0.1.3"
 description = "GNN-based protein structure refinement via differentiable torsions"
 authors = [{name = "George Elkins"}]
 license = "MIT"

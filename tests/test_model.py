@@ -4,7 +4,7 @@ import jax.random as jr
 from torsiontuner.model import FineTunerGNN
 
 
-def test_model_forward():
+def test_model_forward() -> None:
     key = jr.PRNGKey(0)
     n_nodes = 10
     node_dim = 20

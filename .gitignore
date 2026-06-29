@@ -29,6 +29,7 @@ MANIFEST
 # Pytest
 .pytest_cache/
 .benchmarks/
+.hypothesis/
 .coverage
 htmlcov/
 

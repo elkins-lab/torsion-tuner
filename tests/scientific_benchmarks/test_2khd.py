@@ -1,4 +1,5 @@
 import os
+from typing import Any
 
 import equinox as eqx
 import jax.numpy as jnp
@@ -13,7 +14,7 @@ from torsiontuner.model import FineTunerGNN
 from torsiontuner.montelione_utils import get_residue_rc_shifts, ramachandran_penalty
 
 
-def calculate_cs_rmsd(phi, psi, target_shifts, res_indices):
+def calculate_cs_rmsd(phi: Any, psi: Any, target_shifts: Any, res_indices: Any) -> Any:
     rc_shifts = get_residue_rc_shifts(res_indices)
     pred_shifts = predict_ca_shifts(phi, psi, rc_shifts)
     # Align predicated and target (target might be a subset)
@@ -22,7 +23,7 @@ def calculate_cs_rmsd(phi, psi, target_shifts, res_indices):
     return jnp.sqrt(jnp.mean((pred_shifts - target_shifts) ** 2))
 
 
-def test_2khd_benchmark():
+def test_2khd_benchmark() -> None:
     """
     Scientific Benchmark: 2KHD (NESG VC_A0919).
     Verify that refinement reduces CSRMSD against experimental BMRB 16238 data.
@@ -45,7 +46,7 @@ def test_2khd_benchmark():
     rc_shifts_full = get_residue_rc_shifts(res_indices)
 
     # Helper to calculate CSRMSD on the 4-20 subset
-    def get_subset_cs_rmsd(phi, psi):
+    def get_subset_cs_rmsd(phi: Any, psi: Any) -> Any:
         # Slice for residues 4-20
         phi_subset = phi[2:19]
         psi_subset = psi[2:19]
@@ -66,7 +67,7 @@ def test_2khd_benchmark():
     opt_state = optimizer.init(eqx.filter(model, eqx.is_array))
 
     # 4. Refinement Loop (targeted at reducing CSRMSD)
-    def loss_fn(model):
+    def loss_fn(model: Any) -> Any:
         deltas = model(node_features, adj, edge_features)
         _, updated_dihedrals = rebuild_backbone(
             data["init_coords"],
@@ -92,7 +93,7 @@ def test_2khd_benchmark():
         return 1.0 * cs_loss + 0.1 * ansurr_loss + 0.01 * reg_loss
 
     @eqx.filter_jit
-    def make_step(model, opt_state):
+    def make_step(model: Any, opt_state: Any) -> Any:
         loss, grads = eqx.filter_value_and_grad(loss_fn)(model)
         updates, opt_state = optimizer.update(grads, opt_state, model)
         model = eqx.apply_updates(model, updates)

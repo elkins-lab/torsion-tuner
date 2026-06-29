@@ -1,4 +1,5 @@
 import os
+from typing import Any
 
 import equinox as eqx
 import jax.numpy as jnp
@@ -13,7 +14,7 @@ from torsiontuner.model import FineTunerGNN
 from torsiontuner.montelione_utils import get_residue_rc_shifts, ramachandran_penalty
 
 
-def test_2rn7_benchmark():
+def test_2rn7_benchmark() -> None:
     """
     Scientific Benchmark: 2RN7 (NESG SfR125) — Data Loading & Optimizer Convergence.
 
@@ -75,11 +76,11 @@ def test_2rn7_benchmark():
     node_features, adj, edge_features = get_graph_features(data)
     res_indices = data["res_indices"]
 
-    target_res_ids = shift_data["residue"].values
+    target_res_ids = shift_data["residue"].to_numpy()
     target_shifts = jnp.array(shift_data["shift"].values)
     rc_shifts_full = get_residue_rc_shifts(res_indices)
 
-    def get_cs_rmsd(phi, psi):
+    def get_cs_rmsd(phi: Any, psi: Any) -> Any:
         """Compute CSRMSD against BMRB 11017 Cα shifts."""
         rc_subset = rc_shifts_full[1:]  # skip residue 1 (no phi defined)
         pred_shifts_all = predict_ca_shifts(phi, psi, rc_subset)
@@ -100,7 +101,7 @@ def test_2rn7_benchmark():
     optimizer = optax.chain(optax.clip_by_global_norm(1.0), optax.adamw(learning_rate=5e-4))
     opt_state = optimizer.init(eqx.filter(model, eqx.is_array))
 
-    def loss_fn(model):
+    def loss_fn(model: Any) -> Any:
         deltas = model(node_features, adj, edge_features)
         _, updated_dihedrals = rebuild_backbone(
             data["init_coords"],
@@ -126,7 +127,7 @@ def test_2rn7_benchmark():
         return 1.0 * cs_loss + 0.1 * rama_loss + 0.01 * reg_loss
 
     @eqx.filter_jit
-    def make_step(model, opt_state):
+    def make_step(model: Any, opt_state: Any) -> Any:
         loss, grads = eqx.filter_value_and_grad(loss_fn)(model)
         updates, opt_state = optimizer.update(grads, opt_state, model)
         model = eqx.apply_updates(model, updates)
@@ -147,6 +148,7 @@ def test_2rn7_benchmark():
 
     # Convergence criterion: training loss must drop by at least 80% from step 0
     # (step-0 loss reflects a random-weight model, so this is a very achievable bar)
+    assert initial_loss is not None
     assert final_loss < initial_loss * 0.20, (
         f"Optimizer failed to converge: loss {initial_loss:.4f} → {final_loss:.4f} "
         f"(expected at least 80% reduction)"

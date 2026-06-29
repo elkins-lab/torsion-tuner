@@ -42,6 +42,9 @@ nav:
       - Model: api/model.md
       - Kinematics: api/kinematics.md
       - Utils: api/utils.md
+      - Export: api/export.md
+      - PSVS Parser: api/psvs_parser.md
+      - Train: api/train.md
 
 markdown_extensions:
   - admonition

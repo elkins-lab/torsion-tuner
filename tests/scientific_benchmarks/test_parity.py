@@ -41,7 +41,7 @@ import jax.numpy as jnp
 import numpy as np
 import pandas as pd
 import pytest
-import synth_nmr.chemical_shifts as snc
+import synth_nmr.chemical_shifts as snc  # type: ignore
 from diff_biophys.nmr.chemical_shifts import predict_ca_shifts
 from diff_biophys.saxs import debye_saxs
 
@@ -133,7 +133,7 @@ def _compare(
 # ── Existing unit tests (unchanged) ──────────────────────────────────────────
 
 
-def test_ca_shift_parity():
+def test_ca_shift_parity() -> None:
     """
     Verify that our chemical shift predictor exhibits the correct physical
     trends (CSI) compared to established software like SPARTA+.
@@ -164,7 +164,7 @@ def test_ca_shift_parity():
     assert shifts_helix[0] > shifts_beta[0], "Helix shift should be more positive than Beta"
 
 
-def test_saxs_debye_parity():
+def test_saxs_debye_parity() -> None:
     """
     Verify the Debye formula implementation against a pre-calculated
     reference (Crysol-verified) for a simple system.
@@ -198,7 +198,7 @@ def test_saxs_debye_parity():
 # ── Tier 1.1 — synth-nmr predictor parity ────────────────────────────────────
 
 
-def test_synth_nmr_predictor_parity_2khd():
+def test_synth_nmr_predictor_parity_2khd() -> None:
     """
     Tier 1.1 validation: synth-nmr vs TorsionTuner predictor parity on 2KHD.
 
@@ -252,7 +252,7 @@ def test_synth_nmr_predictor_parity_2khd():
     )
 
 
-def test_synth_nmr_predictor_parity_2rn7():
+def test_synth_nmr_predictor_parity_2rn7() -> None:
     """
     Tier 1.1 validation: synth-nmr vs TorsionTuner predictor parity on 2RN7.
 

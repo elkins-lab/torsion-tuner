@@ -4,7 +4,7 @@ from torsiontuner.data import load_pdb
 from torsiontuner.kinematics import rebuild_backbone
 
 
-def test_kinematics_reconstruction():
+def test_kinematics_reconstruction() -> None:
     # 1. Load the test helix
     data = load_pdb("test_helix.pdb")
     coords = data["coords"]

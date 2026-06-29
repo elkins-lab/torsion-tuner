@@ -19,7 +19,7 @@ MolProbity clashscore (expected < 10): 4.1
 """
 
 
-def test_psvs_metrics_improvement():
+def test_psvs_metrics_improvement() -> None:
     """
     Verify that our parser correctly extracts metrics and can identify
     the expected improvements in a refined model.
@@ -40,7 +40,7 @@ def test_psvs_metrics_improvement():
     assert after["clashscore"] < 10
 
 
-def test_parser_partial_content():
+def test_parser_partial_content() -> None:
     """Ensure the parser handles missing metrics gracefully."""
     partial_text = "Verify3D (expected > -0.1): 0.5"
     results = parse_psvs_summary(partial_text)
